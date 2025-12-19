@@ -1,0 +1,40 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>io.autoerror</groupId>
+        <artifactId>autoerror</artifactId>
+        <version>0.4.0</version>
+    </parent>
+
+    <artifactId>autoerror-spring-boot-starter</artifactId>
+    <packaging>jar</packaging>
+
+    <name>AutoError Spring Boot Starter</name>
+
+    <dependencies>
+
+        <!-- Runtime -->
+        <dependency>
+            <groupId>io.autoerror</groupId>
+            <artifactId>autoerror-runtime</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- Annotation processor (compile time only for users) -->
+        <dependency>
+            <groupId>io.autoerror</groupId>
+            <artifactId>autoerror-processor</artifactId>
+            <version>${project.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Spring Boot -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-autoconfigure</artifactId>
+        </dependency>
+
+    </dependencies>
+
+</project>

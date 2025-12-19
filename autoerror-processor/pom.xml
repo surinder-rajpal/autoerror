@@ -1,0 +1,40 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>io.autoerror</groupId>
+        <artifactId>autoerror</artifactId>
+        <version>0.4.0</version>
+    </parent>
+
+    <artifactId>autoerror-processor</artifactId>
+    <packaging>jar</packaging>
+
+    <name>AutoError Annotation Processor</name>
+
+    <dependencies>
+
+        <!-- Annotations -->
+        <dependency>
+            <groupId>io.autoerror</groupId>
+            <artifactId>autoerror-annotations</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- Annotation processing API -->
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+            <version>1.3.2</version>
+        </dependency>
+
+        <!-- Spring types (compile only, generated code depends on them) -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-web</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
+
+</project>
