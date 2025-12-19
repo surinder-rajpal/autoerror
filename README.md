@@ -1,7 +1,6 @@
 📦 AutoError
 
-AutoError is a modular Java error-handling utility framework that simplifies error handling using annotations, runtime helpers, and optional Spring Boot integration. The project includes an annotation library, a compile-time processor, runtime support, and a demo to help you get started quickly. 
-GitHub
+AutoError is a modular Java error-handling utility framework that simplifies error handling using annotations, runtime helpers, and optional Spring Boot integration. The project includes an annotation library, a compile-time processor, runtime support, and a demo to help you get started quickly.
 
 🚀 Features
 
@@ -27,8 +26,7 @@ autoerror/
 └── pom.xml                      # Parent build file
 
 
-Each subproject has its own Maven coordinates and can be published or referenced separately. 
-GitHub
+Each subproject has its own Maven coordinates and can be published or referenced separately.
 
 📦 Getting Started
 1. Add Dependencies
@@ -40,56 +38,26 @@ Maven Example:
 <dependencies>
     <!-- Runtime support -->
     <dependency>
-        <groupId>com.yourorg</groupId>
+        <groupId>io.autoerror</groupId>
         <artifactId>autoerror-runtime</artifactId>
         <version>0.1.0</version>
     </dependency>
 
     <!-- Optional Spring Boot Starter -->
     <dependency>
-        <groupId>com.yourorg</groupId>
+        <groupId>io.autoerror</groupId>
         <artifactId>autoerror-spring-boot-starter</artifactId>
         <version>0.1.0</version>
     </dependency>
 
     <!-- Annotation Processor -->
     <dependency>
-        <groupId>com.yourorg</groupId>
+        <groupId>io.autoerror</groupId>
         <artifactId>autoerror-processor</artifactId>
         <version>0.1.0</version>
         <scope>provided</scope>
     </dependency>
 </dependencies>
-
-✍️ Usage
-Define Errors with Annotations
-
-Create your custom error definitions using provided annotations (e.g., @AutoError or similar).
-
-@AutoError(code = 1001, message = "Invalid request")
-public class InvalidRequestError {}
-
-
-Note: Exact annotation names and usage patterns depend on project source — adjust accordingly.
-
-Handle Errors at Runtime
-
-Use the runtime helper methods to catch and process errors consistently:
-
-try {
-    // some logic
-} catch (Exception e) {
-    ErrorHandler.handle(e);
-}
-
-Spring Boot Integration
-
-If using Spring Boot, simply include the starter and configure any properties:
-
-autoerror.enabled=true
-
-
-This enables automatic scanning and registration of error handlers at startup.
 
 📖 Demo
 
