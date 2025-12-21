@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 @UseApiErrors(UserErrors.class)
 public class UserController {
     @GetMapping("/users/{id}")
-    public String get(@PathVariable int id){
+    public String get(@PathVariable("id") int id){
         throw new UserNotFoundException();
     }
 }

@@ -21,14 +21,6 @@
             <version>${project.version}</version>
         </dependency>
 
-        <!-- Annotation processor (compile time only for users) -->
-        <dependency>
-            <groupId>io.autoerror</groupId>
-            <artifactId>autoerror-processor</artifactId>
-            <version>${project.version}</version>
-            <scope>provided</scope>
-        </dependency>
-
         <!-- Spring Boot -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
