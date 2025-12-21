@@ -35,6 +35,15 @@ public class AutoErrorProcessor extends AbstractProcessor {
         return true;
     }
 
+    String typeFqn(UseApiErrors u) {
+        try {
+            u.value(); // this always throws
+        } catch (MirroredTypeException m) {
+            return m.getTypeMirror().toString();
+        }
+        throw new IllegalStateException();
+    }
+
     void collect(Element e){
         ApiErrors api=e.getAnnotation(ApiErrors.class);
         Set<String> codes=new HashSet<>();
@@ -57,32 +66,47 @@ public class AutoErrorProcessor extends AbstractProcessor {
         throw new IllegalStateException();
     }
 
-    void generate(Element e){
-        UseApiErrors u=e.getAnnotation(UseApiErrors.class);
-        List<ErrorDef> errors=registry.get(u.value().getCanonicalName());
-        if(errors==null)return;
+    void generate(Element e) {
+        UseApiErrors u = e.getAnnotation(UseApiErrors.class);
 
-        try{
-            String pkg=processingEnv.getElementUtils()
-                    .getPackageOf(e).getQualifiedName().toString();
-            String name=e.getSimpleName()+"ApiErrorsAdvice";
-            JavaFileObject f=processingEnv.getFiler()
-                    .createSourceFile(pkg+"."+name);
+        String errorsType = typeFqn(u);
+        List<ErrorDef> errors = registry.get(errorsType);
 
-            try(Writer w=f.openWriter()){
+        if (errors == null) return;
+
+        try {
+            String pkg = processingEnv.getElementUtils()
+                    .getPackageOf(e)
+                    .getQualifiedName()
+                    .toString();
+
+            String name = e.getSimpleName() + "ApiErrorsAdvice";
+
+            JavaFileObject f = processingEnv.getFiler()
+                    .createSourceFile(pkg + "." + name, e);
+
+            try (Writer w = f.openWriter()) {
                 w.write("""
-     package %s;
-     import org.springframework.web.bind.annotation.*;
-     import org.springframework.http.*;
-     import io.autoerror.runtime.*;
+                package %s;
 
-     @ControllerAdvice(assignableTypes=%s.class)
-     public class %s {
-     %s
-     }
-     """.formatted(pkg,e.getSimpleName(),name,handlers(errors)));
+                import org.springframework.web.bind.annotation.*;
+                import org.springframework.http.*;
+                import io.autoerror.runtime.*;
+
+                @ControllerAdvice(assignableTypes = %s.class)
+                public class %s {
+                %s
+                }
+                """.formatted(
+                        pkg,
+                        e.getSimpleName(),
+                        name,
+                        handlers(errors)
+                ));
             }
-        }catch(Exception ex){throw new RuntimeException(ex);}
+        } catch (Exception ex) {
+            throw new RuntimeException(ex);
+        }
     }
 
     String handlers(List<ErrorDef> e){
