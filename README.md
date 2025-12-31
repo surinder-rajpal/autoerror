@@ -34,7 +34,7 @@ Each subproject has its own Maven coordinates and can be published or referenced
 Add the modules you need to your Maven or Gradle project.
 
 Maven Example:
-
+```
 <dependencies>
     <dependency>
         <groupId>io.autoerror</groupId>
@@ -72,7 +72,7 @@ Maven Example:
         </plugin>
     </plugins>
 </build>
-
+```
 📖 Demo
 
 The autoerror-demo project contains working examples showcasing how the annotations and processor work together, including:
