@@ -36,28 +36,42 @@ Add the modules you need to your Maven or Gradle project.
 Maven Example:
 
 <dependencies>
-    <!-- Runtime support -->
-    <dependency>
-        <groupId>io.autoerror</groupId>
-        <artifactId>autoerror-runtime</artifactId>
-        <version>0.1.0</version>
-    </dependency>
-
-    <!-- Optional Spring Boot Starter -->
     <dependency>
         <groupId>io.autoerror</groupId>
         <artifactId>autoerror-spring-boot-starter</artifactId>
         <version>0.1.0</version>
     </dependency>
-
-    <!-- Annotation Processor -->
     <dependency>
         <groupId>io.autoerror</groupId>
-        <artifactId>autoerror-processor</artifactId>
+        <artifactId>autoerror-annotations</artifactId>
         <version>0.1.0</version>
-        <scope>provided</scope>
+        <scope>compile</scope>
     </dependency>
+
 </dependencies>
+
+<build>
+    <plugins>
+        <plugin>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-maven-plugin</artifactId>
+        </plugin>
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.11.0</version>
+            <configuration>
+                <annotationProcessorPaths>
+                    <path>
+                        <groupId>io.autoerror</groupId>
+                        <artifactId>autoerror-processor</artifactId>
+                        <version>${project.version}</version>
+                    </path>
+                </annotationProcessorPaths>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
 
 📖 Demo
 
