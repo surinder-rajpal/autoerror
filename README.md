@@ -37,12 +37,12 @@ Maven Example:
 ```
 <dependencies>
     <dependency>
-        <groupId>io.autoerror</groupId>
+        <groupId>io.github.surinder-rajpal</groupId>
         <artifactId>autoerror-spring-boot-starter</artifactId>
         <version>0.1.0</version>
     </dependency>
     <dependency>
-        <groupId>io.autoerror</groupId>
+        <groupId>io.github.surinder-rajpal</groupId>
         <artifactId>autoerror-annotations</artifactId>
         <version>0.1.0</version>
         <scope>compile</scope>
@@ -63,9 +63,9 @@ Maven Example:
             <configuration>
                 <annotationProcessorPaths>
                     <path>
-                        <groupId>io.autoerror</groupId>
+                        <groupId>io.github.surinder-rajpal</groupId>
                         <artifactId>autoerror-processor</artifactId>
-                        <version>${project.version}</version>
+                        <version>0.1.0</version>
                     </path>
                 </annotationProcessorPaths>
             </configuration>

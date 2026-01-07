@@ -2,7 +2,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <groupId>io.autoerror</groupId>
+        <groupId>io.github.surinder-rajpal</groupId>
         <artifactId>autoerror</artifactId>
         <version>0.4.0</version>
     </parent>
@@ -15,7 +15,7 @@
     <dependencies>
 
         <dependency>
-            <groupId>io.autoerror</groupId>
+            <groupId>io.github.surinder-rajpal</groupId>
             <artifactId>autoerror-spring-boot-starter</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -31,7 +31,7 @@
             <version>${springdoc.version}</version>
         </dependency>
         <dependency>
-            <groupId>io.autoerror</groupId>
+            <groupId>io.github.surinder-rajpal</groupId>
             <artifactId>autoerror-annotations</artifactId>
             <version>0.4.0</version>
             <scope>compile</scope>
@@ -62,7 +62,7 @@
                 <configuration>
                     <annotationProcessorPaths>
                         <path>
-                            <groupId>io.autoerror</groupId>
+                            <groupId>io.github.surinder-rajpal</groupId>
                             <artifactId>autoerror-processor</artifactId>
                             <version>${project.version}</version>
                         </path>
